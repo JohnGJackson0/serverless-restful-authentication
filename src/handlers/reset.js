@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
 
 /*
-  curl --location --request POST 'https://qlq02bl75l.execute-api.us-east-1.amazonaws.com/Prod/reset' \
+  curl --location --request POST 'https://iz1ul818p3.execute-api.us-east-1.amazonaws.com/Prod/reset' \
   --header 'Content-Type: application/json' \
   --data-raw '{"email":"johngjackson0@gmail.com"}'
 

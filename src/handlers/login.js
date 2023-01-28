@@ -1,13 +1,7 @@
 /*
-  curl --location --request POST 'https://t8d33bil8j.execute-api.us-east-1.amazonaws.com/Prod/login' \
+  curl --location --request POST 'https://iz1ul818p3.execute-api.us-east-1.amazonaws.com/Prod/login' \
   --header 'Content-Type: application/json' \
   --data-raw '{"email":"boxaka5531@ekcsoft.com", "password":"dsfdDFDF!3424"}'
-
-  Returns: 
-  {
-    "message": "User has been logged in successfully.",
-    "token": "[token here]"
-  }
 */
 
 const AWS = require("aws-sdk");
@@ -30,7 +24,7 @@ exports.loginHandler = async (event) => {
     const authResponse = await cognitoIdentityServiceProvider
       .initiateAuth(authParams)
       .promise();
-    const token = authResponse.AuthenticationResult.IdToken;
+    const token = authResponse.AuthenticationResult;
     return {
       statusCode: 200,
       body: JSON.stringify({

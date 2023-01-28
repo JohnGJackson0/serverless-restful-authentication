@@ -1,14 +1,8 @@
 /*
-    curl --location --request POST 'https://t8d33bil8j.execute-api.us-east-1.amazonaws.com/Prod/signup' \
+    curl --location --request POST 'https://iz1ul818p3.execute-api.us-east-1.amazonaws.com/Prod/signup' \
     --header 'Content-Type: application/json' \
     --data-raw '{"email":"boxaka5531@ekcsoft.com", "password":"dsfdDFDF!3424"}'
-
-    will return:
-
-    User has been signed up successfully.
 */
-
-//420021
 
 const AWS = require("aws-sdk");
 

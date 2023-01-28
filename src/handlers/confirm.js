@@ -2,16 +2,10 @@
 
   After the user signs up, AWS will send an email to the user containing a confirmation code. This confirmation code must be used to confirm the account and receive the authentication token.
 
-  curl --location --request POST 'https://t8d33bil8j.execute-api.us-east-1.amazonaws.com/Prod/confirm' \
+  curl --location --request POST 'https://iz1ul818p3.execute-api.us-east-1.amazonaws.com/Prod/refresh' \
   --header 'Content-Type: application/json' \
-  --data-raw '{"email":"boxaka5531@ekcsoft.com", "password":"dsfdDFDF!3424", "confirmationCode": "778797"}'
-
-  Returns: 
-
-  {
-    "message": "User has been signed up successfully.",
-    "token": "[token here]"
-  }
+  --data-raw '{"refreshToken":"p6t3JnBxAoAkooXd7YSZnd8KpTQks7wGnHklUPTZzZ3-YO8lSmqWNodXsiWscpp2w-FwmqQ6JiEQyQklrgIJZCoGT2gFkdg53NttV4SaYRwp4Mf12lmDHZPEyUlrTCRGDEnOq-Z_vTVCwcfiAGTS6OdK8omKjzcRXbiXDJDAfpE609sy5mRwLp3X9G9mgT-QfelvBJK4ZJXVOd5SWcaqOkVVEx3UQy_kfh0M5vkfDYsTzPw1HGOfAH_Bf4ieUrejZXVo5egDKR90OVID3Zd5gKWW0qrijf69Li1cw2eewcclkEJvcbN93gIzZpC8sAaUzTXywnU"
+  }'
 */
 
 const AWS = require("aws-sdk");
@@ -43,7 +37,7 @@ exports.confirmHandler = async (event) => {
     const authResponse = await cognitoIdentityServiceProvider
       .initiateAuth(authParams)
       .promise();
-    const token = authResponse.AuthenticationResult.IdToken;
+    const token = authResponse.AuthenticationResult;
 
     return {
       statusCode: 200,

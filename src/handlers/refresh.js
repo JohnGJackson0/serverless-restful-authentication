@@ -1,3 +1,17 @@
+
+/*
+  On Sign up, Login, ect. where you recieve idToken, you will
+  also recieve a refreshToken. We have to use the refresh token, 
+  not the regular authentication token for this endpoint. 
+
+
+  curl --location --request POST 'https://iz1ul818p3.execute-api.us-east-1.amazonaws.com/Prod/refresh' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{"refreshToken":"[refresh token]"
+  }'
+*/
+
+
 const AWS = require("aws-sdk");
 
 exports.refreshHandler = async (event) => {
@@ -18,7 +32,7 @@ exports.refreshHandler = async (event) => {
     const refreshResponse = await cognitoIdentityServiceProvider
       .initiateAuth(refreshParams)
       .promise();
-    const token = refreshResponse.AuthenticationResult.IdToken;
+    const token = refreshResponse.AuthenticationResult;
     return {
       statusCode: 200,
       body: JSON.stringify({

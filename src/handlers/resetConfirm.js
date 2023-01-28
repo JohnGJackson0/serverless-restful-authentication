@@ -1,5 +1,5 @@
 /*
-  curl --location --request POST 'https://5af344t0ml.execute-api.us-east-1.amazonaws.com/Prod/confirmReset' \
+  curl --location --request POST 'https://iz1ul818p3.execute-api.us-east-1.amazonaws.com/Prod/confirmReset' \
   --header 'Content-Type: application/json' \
   --data-raw '{"email":"johngjackson0@gmail.com", "verificationCode": "793108", "newPassword": "dsfdDFDF!3424"}'
 
