@@ -1,4 +1,3 @@
-
 /*
   On Sign up, Login, ect. where you recieve idToken, you will
   also recieve a refreshToken. We have to use the refresh token, 
@@ -10,7 +9,6 @@
   --data-raw '{"refreshToken":"[refresh token]"
   }'
 */
-
 
 const AWS = require("aws-sdk");
 
@@ -32,12 +30,11 @@ exports.refreshHandler = async (event) => {
     const refreshResponse = await cognitoIdentityServiceProvider
       .initiateAuth(refreshParams)
       .promise();
-    const token = refreshResponse.AuthenticationResult;
     return {
       statusCode: 200,
       body: JSON.stringify({
         message: "Token has been refreshed successfully.",
-        token: token,
+        response: refreshResponse,
       }),
     };
   } catch (error) {

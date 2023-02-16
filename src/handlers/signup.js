@@ -27,12 +27,15 @@ exports.signupHandler = async (event) => {
       ],
     };
 
-    await cognitoIdentityServiceProvider.signUp(params).promise();
+    const response = await cognitoIdentityServiceProvider
+      .signUp(params)
+      .promise();
 
     return {
       statusCode: 200,
       body: JSON.stringify({
         message: "User has been signed up successfully.",
+        response: response,
       }),
     };
   } catch (error) {

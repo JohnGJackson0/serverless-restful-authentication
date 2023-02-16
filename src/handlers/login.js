@@ -24,12 +24,11 @@ exports.loginHandler = async (event) => {
     const authResponse = await cognitoIdentityServiceProvider
       .initiateAuth(authParams)
       .promise();
-    const token = authResponse.AuthenticationResult;
     return {
       statusCode: 200,
       body: JSON.stringify({
         message: "User has been logged in successfully.",
-        token: token,
+        reponse: authResponse,
       }),
     };
   } catch (error) {

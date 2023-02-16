@@ -25,12 +25,15 @@ exports.resetConfirmHandler = async (event) => {
   };
 
   try {
-    await cognitoIdentityServiceProvider
+    const response = await cognitoIdentityServiceProvider
       .confirmForgotPassword(params)
       .promise();
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Password reset successful" }),
+      body: JSON.stringify({
+        message: "Password reset successful",
+        response: response,
+      }),
     };
   } catch (err) {
     return {
