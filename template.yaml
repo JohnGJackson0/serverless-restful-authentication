@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: >-
   auth-portal
 Transform:
-- AWS::Serverless-2016-10-31
+  - AWS::Serverless-2016-10-31
 Resources:
   SignUpFunction:
     Type: AWS::Serverless::Function
@@ -20,7 +20,7 @@ Resources:
           Properties:
             Path: /signup
             Method: POST
-  ConfirmSignUpFunction: 
+  ConfirmSignUpFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/confirm.confirmHandler
@@ -36,7 +36,7 @@ Resources:
           Properties:
             Path: /confirm
             Method: POST
-  LoginFunction: 
+  LoginFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/login.loginHandler
@@ -52,7 +52,7 @@ Resources:
           Properties:
             Path: /login
             Method: POST
-  RefreshTokenFunction: 
+  RefreshTokenFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/refresh.refreshHandler
@@ -68,7 +68,7 @@ Resources:
           Properties:
             Path: /refresh
             Method: POST
-  ResetPasswordFunction: 
+  ResetPasswordFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/reset.resetHandler
@@ -84,7 +84,7 @@ Resources:
           Properties:
             Path: /reset
             Method: POST
-  ConfirmResetPasswordFunction: 
+  ConfirmResetPasswordFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/resetConfirm.resetConfirmHandler
@@ -99,6 +99,22 @@ Resources:
           Type: Api
           Properties:
             Path: /confirmReset
+            Method: POST
+  LoginSanityFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/loginSanity.loginSanity
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Login Sanity
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /loginSanity
             Method: POST
 
 Outputs:
