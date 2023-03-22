@@ -116,6 +116,22 @@ Resources:
           Properties:
             Path: /loginSanity
             Method: POST
+  ResendConfirmCodeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/resendConfirmCode.resendConfirmCode
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Resend Confirm Code email
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /resendConfirmCode
+            Method: POST
 
 Outputs:
   WebEndpoint:
